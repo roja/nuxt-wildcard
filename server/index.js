@@ -2,9 +2,12 @@
 const express = require('express')
 const consola = require('consola')
 const { Nuxt, Builder } = require('nuxt')
+const {getApiResponse} = require('wildcard-api');
+
 const app = express()
 const host = process.env.HOST || '127.0.0.1'
 const port = process.env.PORT || 3000
+
 
 app.set('port', port)
 
@@ -21,6 +24,13 @@ async function start() {
     const builder = new Builder(nuxt)
     await builder.build()
   }
+
+  app.all('/wildcard/*' , async (req, res, next) => {
+    const {body, statusCode} = await getApiResponse(req);
+    res.status(statusCode);
+    res.send(body);
+    next();
+  });
 
   // Give nuxt middleware to express
   app.use(nuxt.render)
