@@ -1,0 +1,24 @@
+{
+  "name": "nuxt-wildcard",
+  "version": "1.0.0",
+  "description": "test to see if wildcard works with nuxt",
+  "author": "Roja",
+  "private": true,
+  "scripts": {
+    "dev": "cross-env NODE_ENV=development nodemon server/index.js --watch server",
+    "build": "nuxt build",
+    "start": "cross-env NODE_ENV=production node server/index.js",
+    "generate": "nuxt generate"
+  },
+  "dependencies": {
+    "@nuxtjs/axios": "^5.0.0",
+    "cross-env": "^5.2.0",
+    "express": "^4.16.3",
+    "nuxt": "^2.0.0",
+    "nuxt-buefy": "^0.2.1",
+    "wildcard-api": "^0.1.1"
+  },
+  "devDependencies": {
+    "nodemon": "^1.11.0"
+  }
+}
